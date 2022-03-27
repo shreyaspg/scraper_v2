@@ -4,6 +4,7 @@ var db = require("../database.js");
 
 // https://b124-122-167-250-110.ngrok.io/api/sites/all
 router.get("/all", (req, res, next) => {
+  // #swagger.tags = ['Sites']
   var sql = "select * from sites";
   var params = [];
   db.all(sql, params, (err, rows) => {
@@ -19,6 +20,7 @@ router.get("/all", (req, res, next) => {
 
 // example: https://b124-122-167-250-110.ngrok.io/api/sites?name=sitename
 router.get("/search", (req, res, next) => {
+  // #swagger.tags = ['Sites']
   site_name = req.query.name;
   if (site_name.length == 0) {
     var err = new Error("Something went wrong");

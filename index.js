@@ -1,21 +1,23 @@
-const express = require("express");
-const app = express();
-const dotenv     = require("dotenv");
-const bodyParser = require("body-parser");
-const morgan     = require('morgan')
-var fs = require('fs')
-var path = require('path')
+const express     = require("express");
+const app         = express();
+const dotenv      = require("dotenv");
+const bodyParser  = require("body-parser");
+const morgan      = require('morgan')
+const fs          = require('fs')
+const path        = require('path')
+const swaggerUi   = require('swagger-ui-express')
+const swaggerFile = require('./swagger_output.json')
 
-var helloWorld = require("./routes/helloWorld.js");
-var sites = require("./routes/sites.js");
+var helloWorld    = require("./routes/helloWorld.js");
+var sites         = require("./routes/sites.js");
 dotenv.config();
 
 // Constants
 PORT = process.env.PORT;
 // End of Constants
-
-app.use(morgan('combined'))
+app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile))
 // log all requests to access.log
+app.use(morgan('combined'))
 app.use(morgan('combined', {
   stream: fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' })
 }))
