@@ -10,6 +10,7 @@ const swaggerFile = require('./swagger_output.json')
 
 var helloWorld    = require("./routes/helloWorld.js");
 var sites         = require("./routes/sites.js");
+var models        = require("./routes/models.js")
 dotenv.config();
 
 // Constants
@@ -23,12 +24,14 @@ app.use(morgan('combined', {
 }))
 // Routers 
 app.use(bodyParser.json());
+app.use("/helloWorld", helloWorld)
 app.use("/api/sites", sites);
+app.use("/api/models", models);
 
 // Error middleware
 app.use(function(err, req, res, next) {
   console.error(err.stack);
-  res.status(500).send('500: Server Error');
+  res.status(500).send(err);
 });
 
 // Listener
