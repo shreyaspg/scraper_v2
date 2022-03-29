@@ -21,7 +21,18 @@
     "http"
   ],
   "paths": {
-    "/all": {
+    "/helloWorld/": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/sites/all": {
       "get": {
         "tags": [
           "Sites"
@@ -35,18 +46,13 @@
         }
       }
     },
-    "/search": {
+    "/api/sites/search": {
       "get": {
         "tags": [
           "Sites"
         ],
         "description": "",
         "parameters": [
-          {
-            "name": "name",
-            "in": "query",
-            "type": "string"
-          },
           {
             "name": "body",
             "in": "body",
@@ -66,16 +72,13 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
-          },
           "201": {
             "description": "Return matched sites"
           }
         }
       }
     },
-    "/create": {
+    "/api/sites/create": {
       "post": {
         "tags": [
           "Sites"
@@ -112,7 +115,7 @@
         ],
         "responses": {
           "201": {
-            "description": "Site created successfully",
+            "description": "Site   successfully",
             "schema": {
               "type": "object",
               "properties": {
@@ -137,7 +140,7 @@
         }
       }
     },
-    "/delete": {
+    "/api/sites/delete": {
       "post": {
         "tags": [
           "Sites"
@@ -169,7 +172,7 @@
         }
       }
     },
-    "/all_models": {
+    "/api/models/all_models": {
       "get": {
         "tags": [
           "Models"
@@ -183,7 +186,7 @@
         }
       }
     },
-    "/search_model": {
+    "/api/models/search_model": {
       "post": {
         "tags": [
           "Models"
@@ -240,7 +243,7 @@
         }
       }
     },
-    "/create_model": {
+    "/api/models/create_model": {
       "post": {
         "tags": [
           "Models"
@@ -272,7 +275,7 @@
         }
       }
     },
-    "/delete_model": {
+    "/api/models/delete_model": {
       "post": {
         "tags": [
           "Models"
